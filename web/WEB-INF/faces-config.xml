@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>inicio</from-outcome>
+            <to-view-id>/administrador/indexAdministrador.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>propiedades</from-outcome>
+            <to-view-id>/propiedades/listaPropiedades.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>propietarios</from-outcome>
+            <to-view-id>/administrador/listaPropietarios.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>residentes</from-outcome>
+            <to-view-id>/administrador/listaResidentes.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>perfil administrador</from-outcome>
+            <to-view-id>/administrador/perfilAdministrador.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>perfil residente</from-outcome>
+            <to-view-id>/residente/perfilResidente.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>perfil propietario</from-outcome>
+            <to-view-id>/propietario/perfilPropietario.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

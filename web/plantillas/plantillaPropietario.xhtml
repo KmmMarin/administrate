@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./../resources/css/estilo.css" rel="stylesheet" type="text/css" />
+        <title>
+            <ui:insert name="titulo">
+            </ui:insert>
+        </title>
+    </h:head>
+
+    <h:body>
+        <div id="cabecera">
+            <ui:insert name="cabecera">
+                <br/><br/><br/><br/><br/><br/><br/>
+            </ui:insert>
+        </div>
+
+        <div id="menu">
+            <ui:insert name="menu">
+                <h:form>  
+                    <p:growl id="messages"/>
+                    <p:menubar styleClass="menuPrincipal">
+                        <p:menuitem action="inicio" icon="ui-icon-home" value="Inicio"/>
+                        <p:submenu label="Cartera" icon="ui-icon-folder-open">
+                            
+                        </p:submenu>
+                        <p:submenu label="Documentacion" icon="ui-icon-calculator">
+                           
+                        </p:submenu>
+                        <p:submenu label="Reglamento" icon="ui-icon-lightbulb">
+                        </p:submenu>
+                        <f:facet name="options">
+                            <p:commandButton value="salir" icon="ui-icon-power" action="#{controladorAdministrador.logout()}"/>
+                            <p:commandButton title="perfil" action="perfil propietario" icon="ui-icon-gear"/>
+                        </f:facet>
+                    </p:menubar>
+                </h:form>
+            </ui:insert>
+        </div>
+
+        <div id="contenido">
+            <br/>
+            <ui:insert name="contenido">
+
+            </ui:insert >
+        </div>
+
+        <div id="boton">
+            <br/>
+            <ui:insert name="boton">
+                <span id="autor"><a href="http://www.kavantic.com/" style="text-align: center">www.kavantic.com</a></span>
+            </ui:insert>
+        </div>
+    </h:body>
+</html>

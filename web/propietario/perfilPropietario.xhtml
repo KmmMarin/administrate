@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../plantillas/plantillaPropietario.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="titulo">
+        Administrate | Perfil.
+    </ui:define>
+    <ui:define name="contenido">
+        <h:form>
+            <p:panel styleClass="panelInicioSesion" header="Perfil Propietario">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" redisplay="false"/>
+                <h:panelGrid id="grid" columns="3" cellpadding="5">
+                    <p:outputLabel for="nombres" value="Nombre:" />
+                    <p:inputText id="nombres" value="#{controladorSesion.propietario.nombre}" disabled="true" style="width: 250px"/><br/>
+                    <p:outputLabel for="apellidos" value="Apellidos:" />
+                    <p:inputText id="apellidos" value="#{controladorSesion.propietario.apellidos}" disabled="true" style="width: 250px"/><br/>
+                    <p:outputLabel for="cedula" value="Cédula:" />
+                    <p:inputText id="cedula" value="#{controladorSesion.propietario.cedula}" disabled="true" style="width: 250px"/><br/>
+                    <p:outputLabel for="telefono" value="Teléfono" />
+                    <p:inputText id="telefono" required="true" value="#{controladorSesion.propietario.telefono}" requiredMessage="Campo teléfono requerido" style="width: 250px"/><br/>
+                    <p:outputLabel for="direccion" value="Dirección:" />
+                    <p:inputText id="direccion" required="true" value="#{controladorSesion.propietario.direccion}" requiredMessage="Campo dirección requerido" style="width: 250px"/><br/>
+                    <p:outputLabel for="email" value="Correo:" />
+                    <p:inputText id="email" required="true" value="#{controladorSesion.propietario.email}" requiredMessage="Campo correo requerido" style="width: 250px"/><br/>
+                </h:panelGrid>
+                <p:commandButton id="submitButton" value="Guardar cambios" action="#{controladorPropietario.actualizar()}" icon="ui-icon-person" update="grid"/>&nbsp;
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>

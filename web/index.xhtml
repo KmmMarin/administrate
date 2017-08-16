@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="plantillas/plantillaAdministrador.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="titulo">
+        Administrate | Iniciar Sesión.
+    </ui:define>
+    <ui:define name="menu">
+
+    </ui:define>
+    <ui:define name="contenido">
+        <h:form>
+            <p:panel styleClass="panelInicioSesion" header="Ingresar">
+                <p>Ingrese los siguientes campos para sesión:</p>
+                <p:messages id="messages" showDetail="true" autoUpdate="true" redisplay="false"/>
+                <h:panelGrid id="grid" columns="2" cellpadding="5">
+                    <p:outputLabel value="Usuario:" /> 
+                    <p:inputText id="usuario" value="#{controladorSesion.usuario}" 
+                                 required="true" requiredMessage="Campo usuario requerido" style="width: 245px"/> 
+                    <p:outputLabel value="Contraseña:" /> 
+                    <p:password id="contraseña" value="#{controladorSesion.contraseña}" 
+                                required="true" requiredMessage="Campo usuario requerido" style="width: 245px"/> 
+                    <p:outputLabel value="Rol:" /> 
+                    <p:selectOneMenu id="rol" value="#{controladorSesion.rol}" style="width: 210px">
+                        <f:selectItem itemLabel="Administrador" itemValue="administrador" />
+                        <f:selectItem itemLabel="Propietario" itemValue="propietario" />
+                        <f:selectItem itemLabel="Residente" itemValue="residente" />
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                <p:commandButton id="submitButton" value="Inicar Sesión" action="#{controladorSesion.validarSesion()}" icon="ui-icon-person" update="grid"/>&nbsp; 
+                <p:link value="Olvido su contraseña?" outcome="recuperarContraseña"/>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>
+

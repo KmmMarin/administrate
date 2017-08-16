@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../plantillas/plantillaAdministrador.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="titulo">
+        Administrate | Lista Residentes.
+    </ui:define>
+    <ui:define name="contenido">
+        <p:growl id="message" showDetail="true" />
+        <h:form>
+            <h3>LISTADO DE RESIDENTES</h3>
+            <p:link  value="Ingresar nuevo" outcome="crearResidente"/>
+            <p:dataTable var="residente" value="#{controladorResidente.residentes}">
+                <p:column headerText="Cédula">
+                    <h:outputText value="#{residente.cedula}" />
+                </p:column>
+                <p:column headerText="Nombres">
+                    <h:outputText value="#{residente.nombre}" />
+                </p:column>
+                <p:column headerText="Apellidos">
+                    <h:outputText value="#{residente.apellidos}" />
+                </p:column>
+                <p:column headerText="Teléfono">
+                    <h:outputText value="#{residente.telefono}" />
+                </p:column>
+                <p:column headerText="Dirección">
+                    <h:outputText value="#{residente.direccion}" />
+                </p:column>
+                <p:column headerText="Email">
+                    <h:outputText value="#{residente.email}" />
+                </p:column>
+                <p:column headerText="Residencia">
+                    <h:outputText value="#{residente.idPropiedad}" />
+                </p:column>
+                <p:column style="width: 12px">
+                    <p:commandLink action="#{controladorResidente.prepararGenerarCredenciales(residente)}" title="Credenciales" styleClass="ui-icon ui-icon-locked" />
+                </p:column>
+                <p:column style="width: 12px">
+                    <p:commandLink action="#{controladorResidente.prepararActualizar(residente)}" title="Editar" styleClass="ui-icon ui-icon-pencil"/>
+                </p:column>
+                <p:column style="width: 12px">
+                    <p:commandLink action="#{controladorResidente.eliminar(residente)}" title="Eliminar" styleClass="ui-icon ui-icon-trash" immediate="true" update="message">
+                        <p:confirm header="Confirmación" message="Desea eliminar este usuario?" icon="ui-icon-alert" />
+                    </p:commandLink>
+                </p:column>
+            </p:dataTable>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+        </h:form>
+    </ui:define>
+</ui:composition>

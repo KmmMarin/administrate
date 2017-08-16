@@ -219,7 +219,7 @@ public class ControladorResidente implements Serializable {
             return false;
         }
     }
-    
+
     /**
      * Elimina el residente especificado y retorna a la lista
      *
@@ -372,23 +372,34 @@ public class ControladorResidente implements Serializable {
      * @return devuelve a la lista
      */
     public String generarCredenciales() {
-        fachadaResidente.actualizar(residente);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Credenciales Generadas.", ""));
-        residente = null;
-        return "listaResidentes";
+        if (fachadaResidente.buscarPorUsuario(residente.getUsuario()) == null) {
+            fachadaResidente.actualizar(residente);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Credenciales Generadas.", ""));
+            residente = null;
+            return "listaResidentes";
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario ya registrado en el sistema.", ""));
+            return null;
+        }
+
     }
 
-    
     /**
      * Genera credenciales del residente actual
      *
      * @return devuelve a la lista
      */
     public String generarCredencialesDesdePropiedad() {
-        fachadaResidente.actualizar(residente);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Credenciales Generadas.", ""));
-        residente = null;
-        return "/propiedades/listaResidentesPorPropiedad";
+        if (fachadaResidente.buscarPorUsuario(residente.getUsuario()) == null) {
+            fachadaResidente.actualizar(residente);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Credenciales Generadas.", ""));
+            residente = null;
+            return "/propiedades/listaResidentesPorPropiedad";
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario ya registrado en el sistema.", ""));
+            return null;
+        }
+
     }
 
     /**
@@ -401,8 +412,8 @@ public class ControladorResidente implements Serializable {
     }
 
     /**
-     * Guarda en el sistema el usuario y la contraseña del propietario
-     * actual.
+     * Guarda en el sistema el usuario y la contraseña del propietario actual.
+     *
      * @param residente
      */
     public void guardarUsuarioContraseña(Residente residente) {
@@ -410,15 +421,15 @@ public class ControladorResidente implements Serializable {
     }
 
     /**
-    * Cancelar y volver a la página anterior
-    * 
-    * @return página de lista de residentes
-    */
+     * Cancelar y volver a la página anterior
+     *
+     * @return página de lista de residentes
+     */
     public String cancelar() {
         residente = null;
         return "listaResidentesPorPropiedad";
     }
-    
+
     /**
      * Cerrar sesión actual
      *

@@ -156,6 +156,10 @@ sombra2 {
     background-image: url("/Administrate/faces/javax.faces.resource/images/ui-icons_ffffff_256x240.png?ln=primefaces-aristo");
 }
 
+.atras{
+    background-image: url("../..//imagenes/atras.png");
+}
+
 
 
 

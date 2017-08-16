@@ -97,4 +97,22 @@ public class FachadaResidente {
             return null;
         }
     }
+    
+    /**
+     * Busca el administrador con el usuario dado. 
+     * Retorna null si no existe 
+     * 
+     * @param usuario Email de el administrador 
+     * @return null si el administrador no existe o el objeto administrador 
+     */
+    public Residente buscarPorUsuario(String usuario) {
+        try {
+            Query consulta = em.createQuery("Select r from Residente r where r.usuario = ?1");
+            consulta.setParameter(1, usuario);
+            return (Residente) consulta.getResultList().get(0);
+        } catch (Exception ex) {
+            System.out.println("Error!");
+            return null;
+        }
+    }
 }

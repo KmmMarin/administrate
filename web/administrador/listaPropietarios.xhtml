@@ -14,7 +14,7 @@
         <p:growl id="message" showDetail="true" />
         <h:form>
             <h3>LISTADO DE PROPIETARIOS</h3>
-            <p:link  value="Ingresar nuevo" outcome="crearPropietario"/>
+            <p:commandButton icon="atras" /> 
             <p:dataTable var="propietario" value="#{controladorPropietario.propietarios}">
                 <p:column headerText="Cédula">
                     <h:outputText value="#{propietario.cedula}" />

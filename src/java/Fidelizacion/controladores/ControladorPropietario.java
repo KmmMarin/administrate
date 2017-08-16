@@ -221,10 +221,16 @@ public class ControladorPropietario implements Serializable {
      * @return devuelve a la lista
      */
     public String generarCredenciales() {
-        fachadaPropietario.actualizar(propietario);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Credenciales Generadas.", ""));
-        propietario = null;
-        return "listaPropietarios";
+        if (fachadaPropietario.buscarPorUsuario(propietario.getUsuario())== null) {
+            fachadaPropietario.actualizar(propietario);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Credenciales Generadas.", ""));
+            propietario = null;
+            return "listaPropietarios";
+        }else{
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario ya registrado en el sistema.", ""));
+            return null;
+        }
+
     }
 
     /**

@@ -18,9 +18,7 @@
     <h:body>
         <div id="cabecera">
             <ui:insert name="cabecera">
-                <p:outputLabel value="Propietario: #{controladorSesion.propietario.nombre} #{controladorSesion.propietario.apellidos}"
-                               style="float: right"/>
-                <br/><br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/><br/><br/>
             </ui:insert>
         </div>
 
@@ -30,17 +28,21 @@
                     <p:growl id="messages"/>
                     <p:menubar styleClass="menuPrincipal">
                         <p:menuitem action="inicio" icon="ui-icon-home" value="Inicio"/>
-                        <p:submenu label="Cartera" icon="ui-icon-folder-open">
-
+                        <p:submenu label="Directorio" icon="ui-icon-folder-open">
+                            <p:menuitem action="propiedades" value="Propiedades" icon="ui-icon-home"/>
+                            <p:menuitem action="propietarios" value="Propietarios" icon="ui-icon-person"/>
+                            <p:menuitem action="residentes" value="Residentes" icon="ui-icon-star"/>
                         </p:submenu>
-                        <p:submenu label="Documentacion" icon="ui-icon-calculator">
-
+                        <p:submenu label="Contabilidad" icon="ui-icon-calculator">
+                            <p:menuitem value="Ingresos" icon="ui-icon-plusthick"/>
+                            <p:menuitem value="Gastos" icon="ui-icon-minusthick"/>
+                            <p:menuitem value="Cartera" icon="ui-icon-suitcase"/>
                         </p:submenu>
-                        <p:submenu label="Reglamento" icon="ui-icon-lightbulb">
+                        <p:submenu label="Inventario" icon="ui-icon-lightbulb">
                         </p:submenu>
                         <f:facet name="options">
                             <p:commandButton value="salir" icon="ui-icon-power" action="#{controladorAdministrador.logout()}"/>
-                            <p:commandButton title="perfil" action="perfil propietario" icon="ui-icon-gear"/>
+                            <p:commandButton title="perfil" action="perfil administrador" icon="ui-icon-gear"/>
                         </f:facet>
                     </p:menubar>
                 </h:form>

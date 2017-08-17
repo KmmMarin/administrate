@@ -17,7 +17,9 @@
 
     <h:body>
         <div id="cabecera">
-            <ui:insert name="cabecera">
+            <ui:insert name="cabecera"> 
+                <p:outputLabel value="Administrador: #{controladorSesion.administrador.nombre} #{controladorSesion.administrador.apellidos}"
+                               style="float: right"/>
                 <br/><br/><br/><br/><br/><br/><br/>
             </ui:insert>
         </div>
@@ -28,6 +30,7 @@
                     <p:growl id="messages"/>
                     <p:menubar styleClass="menuPrincipal">
                         <p:menuitem action="inicio" icon="ui-icon-home" value="Inicio"/>
+                        <p:menuitem action="ph" icon="ui-icon-folder-collapsed" value="PH"/>
                         <p:submenu label="Directorio" icon="ui-icon-folder-open">
                             <p:menuitem action="propiedades" value="Propiedades" icon="ui-icon-home"/>
                             <p:menuitem action="propietarios" value="Propietarios" icon="ui-icon-person"/>

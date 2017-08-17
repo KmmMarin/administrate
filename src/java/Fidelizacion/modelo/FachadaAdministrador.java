@@ -9,7 +9,7 @@ import javax.persistence.Query;
 
 /**
  *
- * @author Desarrollo
+ * @author Kavantic S.A.S
  */
 @Stateless
 public class FachadaAdministrador {

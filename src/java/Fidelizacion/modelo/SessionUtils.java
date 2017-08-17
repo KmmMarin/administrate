@@ -4,6 +4,10 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ *
+ * @author Kavantic S.A.S
+ */
 public class SessionUtils {
 
 	public static HttpSession getSession() {

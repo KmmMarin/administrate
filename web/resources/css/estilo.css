@@ -1,5 +1,6 @@
 #cabecera{
     background-image: url("../..//imagenes/banner.png");
+    background-repeat: no-repeat;
     align-content: center;
     position: relative;
     margin-left: auto;

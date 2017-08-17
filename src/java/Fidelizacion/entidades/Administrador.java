@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Fidelizacion.entidades;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,13 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Desarrollo
+ * @author Kavantic S.A.S
  */
 @Entity
 @Table(name = "ADMINISTRADOR")
@@ -38,6 +36,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Administrador.findByUsuario", query = "SELECT a FROM Administrador a WHERE a.usuario = :usuario")
     , @NamedQuery(name = "Administrador.findByContrase\u00f1a", query = "SELECT a FROM Administrador a WHERE a.contrase\u00f1a = :contrase\u00f1a")})
 public class Administrador implements Serializable {
+
+    @OneToMany(mappedBy = "administrador")
+    private Collection<Ph> phCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -184,6 +185,15 @@ public class Administrador implements Serializable {
     @Override
     public String toString() {
         return "Fidelizacion.entidades.Administrador[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Ph> getPhCollection() {
+        return phCollection;
+    }
+
+    public void setPhCollection(Collection<Ph> phCollection) {
+        this.phCollection = phCollection;
     }
     
 }

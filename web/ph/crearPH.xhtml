@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../plantillas/plantillaAdministrador.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="titulo">
+        Administrate | Crear PH.
+    </ui:define>
+    <ui:define name="contenido">
+        <h:form>
+            <p:panel styleClass="panelInicioSesion" header="Registrar PH">
+                <p>Ingrese los siguientes campos para registrar una nueva PH:</p>
+                <p:messages id="messages" showDetail="true" autoUpdate="true" redisplay="false"/>
+                <h:panelGrid id="grid" columns="2" cellpadding="5">
+                     <p:outputLabel value="Nit:" /> 
+                    <p:inputText id="nit" value="#{controladorPH.PH.nit}" 
+                                     required="true" requiredMessage="Campo nit requerido" style="width: 200px">
+                    </p:inputText>
+                    <p:outputLabel value="Nombre:" /> 
+                    <p:inputText id="nombre" value="#{controladorPH.PH.nombre}" 
+                                     required="true" requiredMessage="Campo nombre requerido" style="width: 200px">
+                    </p:inputText> 
+                    <p:outputLabel value="Dirección:" /> 
+                    <p:inputText id="direccion" value="#{controladorPH.PH.direccion}" 
+                                     required="true" requiredMessage="Campo dirección requerido" style="width: 200px">
+                    </p:inputText>
+                    <p:outputLabel value="Teléfono:" /> 
+                    <p:inputText id="telefono" value="#{controladorPH.PH.telefono}" 
+                                     required="true" requiredMessage="Campo teléfono requerido" style="width: 200px">
+                    </p:inputText> 
+                    <p:outputLabel value="Descripción" /> 
+                    <p:inputText id="descripcion" value="#{controladorPH.PH.descripcion}" 
+                                     required="true" requiredMessage="Campo descripción requerido" style="width: 200px">
+                    </p:inputText> 
+                </h:panelGrid>
+                <p:commandButton id="submitButton" value="Crear" action="#{controladorPH.crear()}" icon="ui-icon-home" update="grid"/> 
+                <p:button value="Cancelar" outcome="listaPH" icon="ui-icon-arrowthick-1-w"/>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>

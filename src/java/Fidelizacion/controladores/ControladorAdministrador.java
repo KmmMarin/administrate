@@ -212,7 +212,7 @@ public class ControladorAdministrador implements Serializable {
      * Buscar el administrador de la sesión.
      *
      * @return administrador de la sesión actual
-     */
+    */
     public Administrador sesion() {
         Administrador admin = fachadaAdministrador.buscar(administrador.getUsuario(), administrador.getContraseña());
         return admin;
@@ -239,3 +239,5 @@ public class ControladorAdministrador implements Serializable {
         return "/index";
     }
 }
+
+

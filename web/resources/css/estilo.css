@@ -160,6 +160,13 @@ sombra2 {
 .atras{
     background-image: url("../..//imagenes/atras.png");
 }
+.ui-datepicker .ui-datepicker-calendar .ui-state-default {
+    background: none;
+    border: none;
+    color: white;
+}
+
+
 
 
 

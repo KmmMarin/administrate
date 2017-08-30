@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="../plantillas/plantillaAdministrador.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="titulo">
+        Administrate | Lista Ingresos.
+    </ui:define>
+    <ui:define name="contenido">
+        <p:growl id="message" showDetail="true" />
+        <h:form>
+            <h3>LISTADO DE INGRESOS</h3>
+            <p:link  value="Ingresar nuevo" outcome="crearIngreso"/>
+            <p:dataTable var="ingreso" value="#{controladorIngreso.ingresos}">
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{ingreso.fecha}" />
+                </p:column>
+                <p:column headerText="Valor">
+                    <h:outputText value="#{ingreso.valor}" />
+                </p:column>
+                <p:column headerText="Concepto">
+                    <h:outputText value="#{ingreso.concepto}" />
+                </p:column>
+                <p:column headerText="Pagador">
+                    <h:outputText value="#{ingreso.pagador}" />
+                </p:column>
+                <p:column style="width: 12px">
+                    <p:commandLink action="#{controladorIngreso.prepararActualizar(ingreso)}" title="Editar" styleClass="ui-icon ui-icon-pencil"/>
+                </p:column>
+            </p:dataTable>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+        </h:form>
+    </ui:define>
+</ui:composition>

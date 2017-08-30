@@ -37,6 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Propietario.findByContrase\u00f1a", query = "SELECT p FROM Propietario p WHERE p.contrase\u00f1a = :contrase\u00f1a")})
 public class Propietario implements Serializable {
 
+    @OneToMany(mappedBy = "pagador")
+    private Collection<Ingreso> ingresoCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -193,6 +196,15 @@ public class Propietario implements Serializable {
     @Override
     public String toString() {
         return nombre+" "+apellidos;
+    }
+
+    @XmlTransient
+    public Collection<Ingreso> getIngresoCollection() {
+        return ingresoCollection;
+    }
+
+    public void setIngresoCollection(Collection<Ingreso> ingresoCollection) {
+        this.ingresoCollection = ingresoCollection;
     }
     
 }

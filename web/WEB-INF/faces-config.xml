@@ -38,5 +38,9 @@
             <from-outcome>perfil propietario</from-outcome>
             <to-view-id>/propietario/perfilPropietario.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>ingresos</from-outcome>
+            <to-view-id>/ingreso/crearIngreso.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 </faces-config>
